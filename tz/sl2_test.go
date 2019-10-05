@@ -1,13 +1,13 @@
 package tz
 
 import (
+	"github.com/stretchr/testify/require"
 	"math"
 	"math/rand"
 	"testing"
 	"time"
 
 	"git.nspcc.ru/nspcc/tzhash/gf127"
-	. "github.com/onsi/gomega"
 )
 
 func init() {
@@ -19,7 +19,6 @@ func u64() uint64 {
 }
 
 func TestSL2_MarshalBinary(t *testing.T) {
-	g := NewGomegaWithT(t)
 	a := new(SL2)
 	a[0][0] = *gf127.New(u64(), u64())
 	a[0][1] = *gf127.New(u64(), u64())
@@ -27,11 +26,11 @@ func TestSL2_MarshalBinary(t *testing.T) {
 	a[1][1] = *gf127.New(u64(), u64())
 
 	data, err := a.MarshalBinary()
-	g.Expect(err).NotTo(HaveOccurred())
+	require.NoError(t, err)
 
 	b := new(SL2)
 	err = b.UnmarshalBinary(data)
-	g.Expect(err).NotTo(HaveOccurred())
+	require.NoError(t, err)
 
-	g.Expect(a).To(Equal(b))
+	require.Equal(t, a, b)
 }

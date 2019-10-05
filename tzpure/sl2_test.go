@@ -5,6 +5,8 @@ import (
 	"math/rand"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/require"
 )
 
 func init() {
@@ -16,18 +18,18 @@ func u64() uint64 {
 }
 
 func TestSL2_MarshalBinary(t *testing.T) {
-	// a := new(SL2)
-	// a[0][0] = *NewGF127(u64(), u64())
-	// a[0][1] = *NewGF127(u64(), u64())
-	// a[1][0] = *NewGF127(u64(), u64())
-	// a[1][1] = *NewGF127(u64(), u64())
-	//
-	// data, err := a.MarshalBinary()
-	// g.Expect(err).NotTo(HaveOccurred())
-	//
-	// b := new(SL2)
-	// err = b.UnmarshalBinary(data)
-	// g.Expect(err).NotTo(HaveOccurred())
-	//
-	// g.Expect(a).To(Equal(b))
+	a := new(SL2)
+	a[0][0] = *NewGF127(u64(), u64())
+	a[0][1] = *NewGF127(u64(), u64())
+	a[1][0] = *NewGF127(u64(), u64())
+	a[1][1] = *NewGF127(u64(), u64())
+
+	data, err := a.MarshalBinary()
+	require.NoError(t, err)
+
+	b := new(SL2)
+	err = b.UnmarshalBinary(data)
+	require.NoError(t, err)
+
+	require.Equal(t, a, b)
 }
