@@ -67,7 +67,7 @@ func main() {
 	case "tz":
 		h = tz.New()
 	default:
-		panic("kek")
+		panic("unknown backend")
 	}
 
 	// h.Write([]byte{0x63})
