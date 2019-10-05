@@ -71,7 +71,7 @@ func decode(p sl2_t) (h [hashSize]byte) {
 func (d *digest) Write(data []byte) (n int, err error) {
 	n = len(data)
 	if n > 0 {
-		C.sl2_mul_buf_right(d.s, (*C.uchar)(C.CBytes(data)), C.size_t(n))
+		C.sl2_mul_buf_right(d.s, (*C.uchar)(&data[0]), C.size_t(n))
 	}
 	return
 }
@@ -87,7 +87,7 @@ func (d *digest) BlockSize() int {
 // Sum returnz Tillich-Zémor checksum of data
 func Sum(data []byte) [hashSize]byte {
 	p := unit()
-	buf := (*C.uchar)(C.CBytes(data))
+	buf := (*C.uchar)(&data[0])
 	l := C.size_t(len(data))
 	if len(data) > 0 {
 		C.sl2_mul_buf_right(p, buf, l)
