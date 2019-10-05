@@ -27,22 +27,6 @@ func New() *digest2 {
 }
 
 func (d *digest2) Write(data []byte) (n int, err error) {
-	//dd := new(digest2)
-	// dd.Reset()
-	// mulByteRightx2(&dd.x[0], &dd.x[1], data[0])
-	// fmt.Println(dd.Sum(nil))
-	//
-	// dd.Reset()
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>7)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>6)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>5)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>4)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>3)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>2)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>1)&1])
-	// mulBitRightx2(&dd.x[0], &dd.x[1], &minmax[(data[0]>>0)&1])
-	// fmt.Println(dd.Sum(nil))
-
 	n = len(data)
 	for _, b := range data {
 		mulByteRightx2(&d.x[0], &d.x[1], b)
