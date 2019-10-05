@@ -49,7 +49,7 @@ func (d *digestL) Write(data []byte) (n int, err error) {
 		(*C.gf2p127_t)(unsafe.Pointer(start + uintptr(48))),
 	}
 	for _, b := range data {
-		C.sl2_mul_bits_right(addr[0], addr[2], addr[1], addr[3], C.uchar(b))
+		C.sl2_mul_bits_right(addr[0], addr[1], addr[2], addr[3], C.uchar(b))
 	}
 	return
 }
