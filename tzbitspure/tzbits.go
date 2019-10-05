@@ -80,7 +80,6 @@ func Sum(data []byte) [hashSize]byte {
 	return d.checkSum()
 }
 
-
 func mulBitRight(c00, c01, c10, c11 *GF127, bit bool) {
 	var tmp GF127
 	if bit {

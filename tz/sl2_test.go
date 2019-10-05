@@ -1,13 +1,13 @@
 package tz
 
 import (
-	"github.com/stretchr/testify/require"
 	"math"
 	"math/rand"
 	"testing"
 	"time"
 
 	"git.nspcc.ru/nspcc/tzhash/gf127"
+	"github.com/stretchr/testify/require"
 )
 
 func init() {
