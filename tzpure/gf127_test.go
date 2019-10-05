@@ -91,7 +91,7 @@ func TestInv(t *testing.T) {
 }
 
 func TestGF127_MarshalBinary(t *testing.T) {
-	a := New(0xFF, 0xEE)
+	a := NewGF127(0xFF, 0xEE)
 	data, err := a.MarshalBinary()
 	require.NoError(t, err)
 	require.Equal(t, data, []byte{0, 0, 0, 0, 0, 0, 0, 0xEE, 0, 0, 0, 0, 0, 0, 0, 0xFF})
