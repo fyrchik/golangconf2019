@@ -60,6 +60,8 @@ func main() {
 		h = tzbits.New()
 	case "tz2":
 		h = tz2.New()
+	case "tz2noinline":
+		h = tz2.NewNoInline()
 	case "tzpure":
 		h = tzpure.New()
 	case "tzpurebits":

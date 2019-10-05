@@ -30,14 +30,6 @@ func (d *digest2) Write(data []byte) (n int, err error) {
 	n = len(data)
 	for _, b := range data {
 		mulByteRightx2(&d.x[0], &d.x[1], b)
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>7)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>6)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>5)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>4)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>3)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>2)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>1)&1])
-		// mulBitRightx2(&d.x[0], &d.x[1], &minmax[(b>>0)&1])
 	}
 	return
 }
@@ -66,9 +58,6 @@ func (d *digest2) checkSum() (b [hashSize]byte) {
 	copy(b[48:], h[16:])
 	return
 }
-
-//go:noescape
-func mulBitRightx2(c00c10 *gf127.GF127x2, c01c11 *gf127.GF127x2, e *gf127.GF127)
 
 //go:noescape
 func mulByteRightx2(c00c10 *gf127.GF127x2, c01c11 *gf127.GF127x2, b byte)

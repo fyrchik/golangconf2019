@@ -6,8 +6,7 @@ dd if=/dev/urandom of=$tmpfile bs=1M count=$size
 #tmpfile=$1
 
 go build ./cmd/tzsum && \
-#for c in tzC tz tzbits tz2 tzpure tzpurebits; do
-for c in tzpurebits tz tzC tzCLoop tzbits tz2 ; do
+for c in tzpurebits tz tzC tzCLoop tzbits tz2 tz2noinline ; do
 	echo $c
 	#./tzsum -cpuprofile cpu.prof -name $tmpfile -hash $c
 	time	./tzsum -name $tmpfile -hash $c
